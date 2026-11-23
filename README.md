@@ -72,7 +72,14 @@ docker compose logs hermes
 
 Paste the token and choose your own username, password and timezone. Nothing personal is shipped in the repository; your account is created at first run.
 
-The container runs as uid 1000. With rootful Docker make `./data` writable by that user (`sudo chown 1000:1000 data`); with rootless Podman add `:U` to the volume in `docker-compose.yml` (`./data:/data:U`).
+The container runs as uid 1000, so `./data` must be writable by that user before the first start:
+
+```sh
+sudo chown 1000:1000 data            # rootful Docker
+podman unshare chown 1000:1000 data  # rootless Podman
+```
+
+If the app is unreachable and `docker compose logs hermes` shows `SQLITE_CANTOPEN`, this step was missed: run it, then `docker compose restart`.
 
 ## Remote access
 
