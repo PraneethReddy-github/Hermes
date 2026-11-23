@@ -1,0 +1,15 @@
+node_modules
+build
+.svelte-kit
+data
+.docker-data
+.e2e-data
+test-results
+.git
+.superpowers
+docs
+e2e
+.env*
+*.db
+*.db-*
+secrets.key

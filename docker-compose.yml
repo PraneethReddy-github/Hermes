@@ -1,0 +1,15 @@
+services:
+  hermes:
+    build: .
+    image: hermes
+    restart: unless-stopped
+    ports: ['127.0.0.1:3000:3000']
+    volumes: ['./data:/data']
+    environment:
+      # REQUIRED: the exact URL you open in the browser (scheme + host + port), e.g.
+      # https://hermes.example.com, https://<machine>.<tailnet>.ts.net or http://localhost:3000.
+      ORIGIN: https://hermes.example.com
+      # Behind a local reverse proxy (tailscale serve, Caddy, nginx): read the real client IP so login
+      # rate limiting is per client. Remove both lines if you expose the port directly.
+      ADDRESS_HEADER: X-Forwarded-For
+      XFF_DEPTH: '1'

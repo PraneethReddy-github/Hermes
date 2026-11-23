@@ -1,0 +1,2 @@
+CREATE UNIQUE INDEX `event_exceptions_event_start_uq` ON `event_exceptions` (`event_id`,`original_start`);--> statement-breakpoint
+CREATE INDEX `task_completions_task_idx` ON `task_completions` (`task_id`);
