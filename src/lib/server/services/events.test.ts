@@ -59,7 +59,7 @@ describe('createEvent', () => {
 		expect(() => createEvent(db, { ...ok, color: '#123456' })).toThrow('Invalid colour');
 		expect(() => createEvent(db, { ...ok, projectId: 'nope' })).toThrow('Project not found');
 		const p = createProject(db, { name: 'P' });
-		expect(createEvent(db, { ...ok, color: '#E3A93B', projectId: p.id }).projectId).toBe(p.id);
+		expect(createEvent(db, { ...ok, color: '#D4AF37', projectId: p.id }).projectId).toBe(p.id);
 	});
 
 	it('indexes title, location and notes', () => {

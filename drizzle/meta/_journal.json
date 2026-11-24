@@ -36,6 +36,13 @@
       "when": 1795403816857,
       "tag": "0004_smart_romulus",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1795521701099,
+      "tag": "0005_gold_colour",
+      "breakpoints": true
     }
   ]
 }

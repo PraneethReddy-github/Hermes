@@ -40,7 +40,7 @@
 	<form class="card" method="POST" action="?/create" use:enhance={act}>
 		<h2>New project</h2>
 		<label>Name <input name="name" required maxlength="60" autocomplete="off" /></label>
-		<ColorSwatches value="#E3A93B" />
+		<ColorSwatches value="#D4AF37" />
 		<label>
 			Kind
 			<select name="kind">

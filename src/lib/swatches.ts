@@ -1,6 +1,6 @@
 /** The 8 colours projects and labels can have; they read on both themes. Server validates against this. */
 export const SWATCHES = [
-	{ value: '#E3A93B', name: 'Gold' },
+	{ value: '#D4AF37', name: 'Gold' },
 	{ value: '#5B9BD5', name: 'Blue' },
 	{ value: '#58B37A', name: 'Green' },
 	{ value: '#E07B39', name: 'Orange' },
