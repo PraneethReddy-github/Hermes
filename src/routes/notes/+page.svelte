@@ -25,7 +25,11 @@
 
 <main>
 	<TopBar title="Notes" />
-	<p class="add"><a class="btn" href={resolve('/notes/new')}>+ Note</a></p>
+	<p class="add">
+		<a class="btn" href={resolve('/notes/new')} aria-label="+ Note">
+			<Icon name="plus" size={20} /> Note
+		</a>
+	</p>
 
 	<div class="pills" role="radiogroup" aria-label="Kind">
 		{#each FILTERS as [k, label] (k)}
@@ -72,10 +76,11 @@
 		margin: 0 0 12px;
 	}
 	.btn {
-		display: inline-grid;
-		place-items: center;
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
 		min-height: 44px;
-		padding: 0 16px;
+		padding: 0 16px 0 12px;
 		background: var(--accent-fill);
 		color: var(--accent-ink);
 		border-radius: var(--r-2);

@@ -9,6 +9,8 @@ export interface Hit {
 	/** Body excerpt; matches wrapped in U+0002 / U+0003 (split on them, never render as HTML). */
 	snippet: string;
 	extra?: string;
+	/** Events: part of a repeating series. */
+	recurring?: boolean;
 	done?: boolean;
 	/** Events: local day (YYYY-MM-DD) to open in the agenda. */
 	date?: string;
@@ -109,10 +111,8 @@ export function searchAll(
 		const date = localDayKey(start, tz);
 		const [y, m, d] = date.split('-').map(Number);
 		const label = DAY_FMT.format(new Date(Date.UTC(y, m - 1, d))).replace(',', '');
-		const extra = [label, !r.all_day && localTime(start, tz), r.rrule && '↻']
-			.filter(Boolean)
-			.join(' ');
-		return { id: r.id, title: r.title, snippet: snippetOf(r), extra, date };
+		const extra = [label, !r.all_day && localTime(start, tz)].filter(Boolean).join(' ');
+		return { id: r.id, title: r.title, snippet: snippetOf(r), extra, date, recurring: !!r.rrule };
 	});
 
 	const notes = run(db, 'note', q, limit, '', 'JOIN notes x ON x.id = s.entity_id', '').map(

@@ -15,6 +15,7 @@
 			'<path d="M3 7h11M18 7h3M3 17h3M10 17h11"/><rect x="14" y="5" width="4" height="4"/><rect x="6" y="15" width="4" height="4"/>',
 		'chevron-left': '<path d="M15 5l-7 7 7 7"/>',
 		'chevron-right': '<path d="M9 5l7 7-7 7"/>',
+		repeat: '<path d="M5 11V7h13M15 4l3 3-3 3M19 13v4H6M9 14l-3 3 3 3"/>',
 		close: '<path d="M6 6l12 12M18 6L6 18"/>'
 	};
 	let { name, size = 24 }: { name: keyof typeof PATHS; size?: number } = $props();

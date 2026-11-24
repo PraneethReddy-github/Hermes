@@ -68,7 +68,7 @@ describe('searchAll', () => {
 		expect(r.tasks[1].done).toBe(true);
 	});
 
-	it('event extra: recurring shows series start with a loop mark', () => {
+	it('event extra: recurring is flagged and extra holds the series start', () => {
 		const db = createTestDb();
 		createEvent(db, {
 			title: 'Standup',
@@ -76,9 +76,10 @@ describe('searchAll', () => {
 			endAt: '2026-11-02T09:00:00.000Z',
 			rrule: 'FREQ=WEEKLY'
 		});
-		expect(searchAll(db, 'standup', 50, { now: NOW, timeZone: TZ }).events[0].extra).toBe(
-			'Mon 2 Nov 09:00 ↻'
-		);
+		expect(searchAll(db, 'standup', 50, { now: NOW, timeZone: TZ }).events[0]).toMatchObject({
+			extra: 'Mon 2 Nov 09:00',
+			recurring: true
+		});
 	});
 
 	it('finds punctuated words, dates and combining marks', () => {

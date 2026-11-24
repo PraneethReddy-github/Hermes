@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import TopBar from '#lib/components/TopBar.svelte';
 	import EmptyState from '#lib/components/EmptyState.svelte';
+	import Icon from '#lib/components/Icon.svelte';
 	import TaskSheet from '#lib/components/tasks/TaskSheet.svelte';
 	import type { PageProps } from './$types';
 
@@ -148,7 +149,14 @@
 		{h.title || 'Untitled'}
 		{#if h.done}<span class="badge">Done</span>{/if}
 	</span>
-	{#if h.extra}<span class="extra">{h.extra}</span>{/if}
+	{#if h.extra}
+		<span class="extra">
+			{h.extra}
+			{#if h.recurring}<span class="repeat" role="img" aria-label="Repeats">
+					<Icon name="repeat" size={16} />
+				</span>{/if}
+		</span>
+	{/if}
 	{@render snip(h.snippet)}
 {/snippet}
 
@@ -215,6 +223,11 @@
 		color: var(--text-muted);
 		border: 1px solid var(--border-strong);
 		border-radius: var(--r-1);
+	}
+	.repeat {
+		display: inline-flex;
+		vertical-align: middle;
+		margin-left: 4px;
 	}
 	.extra,
 	.snip {

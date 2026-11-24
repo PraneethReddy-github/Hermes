@@ -102,6 +102,10 @@
 		</div>
 		{#each cols as c (c.day)}
 			<div class="col" class:today={c.day === today} data-day={c.day}>
+				<!-- Rendered first so events and task chips paint over it; the marker stays on top. -->
+				{#if c.day === today}
+					<div class="now" style:top="{(nowMin / 60) * HOUR_PX}px" aria-hidden="true"></div>
+				{/if}
 				{#each c.events as e (e.occ.eventId + e.occ.originalStart)}
 					<EventBlock occ={e.occ} {tz} seg={e} {onopen} onchange={onmove} />
 				{/each}
@@ -115,7 +119,7 @@
 					/>
 				{/each}
 				{#if c.day === today}
-					<div class="now" style:top="{(nowMin / 60) * HOUR_PX}px" aria-hidden="true"></div>
+					<div class="nowmark" style:top="{(nowMin / 60) * HOUR_PX}px" aria-hidden="true"></div>
 				{/if}
 			</div>
 		{/each}
@@ -195,13 +199,21 @@
 			transparent 1px var(--hour)
 		);
 	}
-	.col.today {
-		background-color: color-mix(in srgb, var(--accent-soft) 40%, transparent);
-	}
 	.now {
 		position: absolute;
-		inset: 0 0 auto 0;
+		/* 2px short on the right: event blocks are 2px narrower than the column, so no sliver peeks out. */
+		inset: 0 2px auto 0;
 		height: 2px;
+		background: var(--accent);
+		pointer-events: none;
+	}
+	/* Square marker at the column's left edge: "now" stays visible where an event covers the line. */
+	.nowmark {
+		position: absolute;
+		left: 0;
+		width: 8px;
+		height: 8px;
+		margin-top: -3px;
 		background: var(--accent);
 		z-index: 4;
 		pointer-events: none;

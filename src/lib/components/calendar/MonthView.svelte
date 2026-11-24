@@ -83,7 +83,7 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 4px;
-		min-height: 56px;
+		min-height: 84px;
 		font-family: var(--font-mono);
 		font-size: 0.875rem;
 		padding: 6px 2px;
