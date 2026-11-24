@@ -8,6 +8,8 @@ import { withPwa } from '@vite-pwa/sveltekit';
 const { version } = JSON.parse(readFileSync('./package.json', 'utf8')) as { version: string };
 
 export default defineConfig({
+	// Never inline fonts: the CSP (default-src 'self') has no data: for fonts.
+	build: { assetsInlineLimit: (file) => (file.endsWith('.woff2') ? false : undefined) },
 	define: { __APP_VERSION__: JSON.stringify(version) },
 	plugins: [
 		tailwindcss(),
@@ -44,14 +46,19 @@ export default defineConfig({
 				// Precache the built app shell only; src/sw.ts keeps authenticated pages out of caches.
 				strategies: 'buildSW',
 				// globStrict off: this app prerenders nothing.
-				buildSW: { swSrc: 'src/sw.ts', globStrict: false },
+				buildSW: {
+					swSrc: 'src/sw.ts',
+					globStrict: false,
+					// Kit's defaults plus the bundled fonts (woff2 only; the woff fallback is never needed).
+					globPatterns: ['client/**/*.{js,css,ico,png,svg,webp,webmanifest,woff2}']
+				},
 				manifest: {
 					name: 'Hermes',
 					short_name: 'Hermes',
 					start_url: '/',
 					display: 'standalone',
-					theme_color: '#0F1115',
-					background_color: '#0F1115',
+					theme_color: '#0B0C0E',
+					background_color: '#0B0C0E',
 					icons: [
 						{ src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
 						{ src: '/icons/icon-512.png', sizes: '512x512', type: 'image/png' },

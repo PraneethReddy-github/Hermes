@@ -1,63 +1,96 @@
 @import 'tailwindcss';
 
-/* Tokens: spec §8. Dark is the default; 'system' follows the OS, light/dark force it. */
+/* Fonts are bundled (no network); vite.config keeps woff2 out of data: URIs so the CSP holds. */
+@import '@fontsource/ibm-plex-sans/latin-400.css';
+@import '@fontsource/ibm-plex-sans/latin-500.css';
+@import '@fontsource/ibm-plex-sans/latin-600.css';
+@import '@fontsource/ibm-plex-sans/latin-ext-400.css';
+@import '@fontsource/ibm-plex-sans/latin-ext-500.css';
+@import '@fontsource/ibm-plex-sans/latin-ext-600.css';
+@import '@fontsource/ibm-plex-mono/latin-400.css';
+@import '@fontsource/ibm-plex-mono/latin-500.css';
+@import '@fontsource/ibm-plex-mono/latin-ext-400.css';
+@import '@fontsource/ibm-plex-mono/latin-ext-500.css';
+
+/* Tokens: "graphite and gold". Dark is the default; 'system' follows the OS, light/dark force it. */
 :root {
 	color-scheme: dark;
-	--bg: #0f1115;
-	--surface: #181b21;
-	--surface-2: #22262e;
-	--border: #2c313a;
-	--text: #eceae4;
-	--text-muted: #9a9da5;
-	--accent: #e3a93b;
-	--accent-ink: #1a1405;
-	--info: #5b9bd5;
-	--ok: #58b37a;
-	--warn: #e07b39;
-	--danger: #e05252;
+	--bg: #0b0c0e;
+	--surface: #111316;
+	--surface-2: #171a1e;
+	--surface-3: #1d2126;
+	--border: #23272d;
+	--border-strong: #323840;
+	--text: #e7e9ec;
+	--text-muted: #9aa1aa;
+	--accent: #d4af37; /* gold as text, icon, line, focus ring */
+	--accent-fill: #d4af37; /* gold as a fill */
+	--accent-ink: #0b0c0e; /* text on --accent-fill */
+	--accent-soft: rgb(212 175 55 / 0.12);
+	--info: #7fa7d9;
+	--ok: #5bbe8a;
+	--warn: #e08a4a;
+	--danger: #e5604f;
+
+	--font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+	--font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+	--r-1: 2px; /* inputs, buttons, chips, pills, blocks, checkboxes, swatches, marks, dots */
+	--r-2: 4px; /* sheets, dialogs, panels, toast, FAB */
+	--shadow-float: 0 8px 24px rgb(0 0 0 / 0.35); /* floating layers only */
+	--ease: cubic-bezier(0.2, 0, 0, 1);
+	--t-fast: 120ms; /* hover, press */
+	--t-sheet: 180ms;
 }
 @media (prefers-color-scheme: light) {
 	:root:not([data-theme='dark']) {
 		color-scheme: light;
-		--bg: #f7f5f0;
-		--surface: #ffffff;
-		--surface-2: #efece5;
-		--border: #e2ded5;
-		--text: #1a1c20;
-		--text-muted: #62656c;
-		--accent: #8c600c;
-		--accent-ink: #ffffff;
-		--info: #2f6fa8;
-		--ok: #2e8250;
-		--warn: #b85a1c;
-		--danger: #b83232;
+		--bg: #f3f3f0;
+		--surface: #fafaf8;
+		--surface-2: #ffffff;
+		--surface-3: #ebebe6;
+		--border: #e2e2dc;
+		--border-strong: #cbcbc3;
+		--text: #111214;
+		--text-muted: #555a60;
+		--accent: #735600;
+		--accent-soft: rgb(115 86 0 / 0.08);
+		--info: #2f5f99;
+		--ok: #1f7247;
+		--warn: #a6501a;
+		--danger: #b8382a;
 	}
 }
 :root[data-theme='light'] {
 	color-scheme: light;
-	--bg: #f7f5f0;
-	--surface: #ffffff;
-	--surface-2: #efece5;
-	--border: #e2ded5;
-	--text: #1a1c20;
-	--text-muted: #62656c;
-	--accent: #8c600c;
-	--accent-ink: #ffffff;
-	--info: #2f6fa8;
-	--ok: #2e8250;
-	--warn: #b85a1c;
-	--danger: #b83232;
+	--bg: #f3f3f0;
+	--surface: #fafaf8;
+	--surface-2: #ffffff;
+	--surface-3: #ebebe6;
+	--border: #e2e2dc;
+	--border-strong: #cbcbc3;
+	--text: #111214;
+	--text-muted: #555a60;
+	--accent: #735600;
+	--accent-soft: rgb(115 86 0 / 0.08);
+	--info: #2f5f99;
+	--ok: #1f7247;
+	--warn: #a6501a;
+	--danger: #b8382a;
 }
 
 @theme inline {
 	--color-bg: var(--bg);
 	--color-surface: var(--surface);
 	--color-surface-2: var(--surface-2);
+	--color-surface-3: var(--surface-3);
 	--color-border: var(--border);
+	--color-border-strong: var(--border-strong);
 	--color-text: var(--text);
 	--color-muted: var(--text-muted);
 	--color-accent: var(--accent);
+	--color-accent-fill: var(--accent-fill);
 	--color-accent-ink: var(--accent-ink);
+	--color-accent-soft: var(--accent-soft);
 	--color-info: var(--info);
 	--color-ok: var(--ok);
 	--color-warn: var(--warn);
@@ -68,12 +101,8 @@ body {
 	margin: 0;
 	background: var(--bg);
 	color: var(--text);
-	font:
-		16px/1.5 system-ui,
-		-apple-system,
-		'Segoe UI',
-		Roboto,
-		sans-serif;
+	font: 16px/1.5 var(--font-sans);
+	font-weight: 400;
 }
 main {
 	max-width: 720px;
@@ -91,12 +120,28 @@ h2 {
 	font-weight: 600;
 }
 h1 {
-	font-size: 1.5rem;
+	font-size: 1.375rem;
+	letter-spacing: -0.01em;
 	margin: 0 0 16px;
 }
 h2 {
 	font-size: 1.125rem;
 	margin: 0 0 12px;
+}
+
+/* Mono for every time, date, count, hour label, version and file name. */
+.mono {
+	font-family: var(--font-mono);
+	font-variant-numeric: tabular-nums;
+}
+/* Section labels (Overdue, Events...). Uppercase via CSS only: the DOM text is unchanged. */
+.caps {
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--text-muted);
 }
 
 label {
@@ -116,30 +161,71 @@ textarea {
 	padding: 0 12px;
 	background: var(--surface-2);
 	color: var(--text);
-	border: 1px solid var(--border);
-	border-radius: 8px;
+	border: 1px solid var(--border-strong);
+	border-radius: var(--r-1);
 	font: inherit;
+}
+input:not([type='hidden']):not([type='checkbox']):not([type='radio']):is(
+		[type='date'],
+		[type='time'],
+		[type='number']
+	) {
+	font-family: var(--font-mono);
 }
 textarea {
 	padding: 8px 12px;
 	min-height: 88px;
 	resize: vertical;
 }
+/* Checkboxes: square, 1.5px strong border; checked = --text fill with a --bg mark. */
+input[type='checkbox'] {
+	appearance: none;
+	flex: none;
+	width: 22px;
+	height: 22px;
+	margin: 0;
+	border: 1.5px solid var(--border-strong);
+	border-radius: var(--r-1);
+	background: transparent;
+	cursor: pointer;
+	display: inline-grid;
+	place-content: center;
+	vertical-align: middle;
+}
+input[type='checkbox']:checked {
+	background: var(--text);
+	border-color: var(--text);
+}
+input[type='checkbox']:checked::after {
+	content: '';
+	width: 10px;
+	height: 5px;
+	margin-top: -2px;
+	border-left: 2px solid var(--bg);
+	border-bottom: 2px solid var(--bg);
+	transform: rotate(-45deg);
+}
 button {
 	min-height: 44px;
 	padding: 0 16px;
-	background: var(--accent);
+	background: var(--accent-fill);
 	color: var(--accent-ink);
-	border: 1px solid var(--accent);
-	border-radius: 8px;
+	border: 1px solid var(--accent-fill);
+	border-radius: var(--r-1);
 	font: inherit;
 	font-weight: 600;
 	cursor: pointer;
+	transition:
+		opacity var(--t-fast) var(--ease),
+		transform var(--t-fast) var(--ease);
+}
+button:active {
+	transform: translateY(1px);
 }
 button.ghost {
 	background: transparent;
 	color: var(--text);
-	border-color: var(--border);
+	border-color: var(--border-strong);
 }
 :focus-visible {
 	outline: 2px solid var(--accent);
@@ -149,10 +235,11 @@ button.ghost {
 	color: var(--danger);
 }
 
+/* Panel: flat surface step with a hairline, no card float. */
 .card {
 	background: var(--surface);
 	border: 1px solid var(--border);
-	border-radius: 12px;
+	border-radius: var(--r-2);
 	padding: 16px;
 	margin-bottom: 16px;
 }
