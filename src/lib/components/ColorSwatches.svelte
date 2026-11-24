@@ -57,10 +57,10 @@
 		cursor: pointer;
 	}
 	.dot {
-		width: 28px;
-		height: 28px;
+		width: 24px;
+		height: 24px;
 		box-sizing: border-box;
-		border-radius: 50%;
+		border-radius: var(--r-1);
 		background: var(--c);
 		border: 2px solid transparent;
 	}

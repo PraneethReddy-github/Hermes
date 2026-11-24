@@ -76,22 +76,24 @@
 		place-items: center;
 		min-height: 44px;
 		padding: 0 16px;
-		background: var(--accent);
+		background: var(--accent-fill);
 		color: var(--accent-ink);
-		border-radius: 8px;
+		border-radius: var(--r-2);
 		font-weight: 600;
 		text-decoration: none;
 	}
 	.pills {
 		display: flex;
-		gap: 8px;
 		margin-bottom: 12px;
 		overflow-x: auto;
 	}
 	label {
 		position: relative;
 		flex: none;
-		margin: 0;
+		margin: 0 0 0 -1px;
+	}
+	label:first-child {
+		margin-left: 0;
 	}
 	input {
 		position: absolute;
@@ -105,16 +107,21 @@
 		place-items: center;
 		min-height: 44px;
 		padding: 0 16px;
-		border: 1px solid var(--border);
-		border-radius: 22px;
+		border: 1px solid var(--border-strong);
 		background: var(--surface-2);
-		color: var(--text);
+		color: var(--text-muted);
+		font-weight: 500;
+	}
+	label:first-child span {
+		border-radius: var(--r-1) 0 0 var(--r-1);
+	}
+	label:last-child span {
+		border-radius: 0 var(--r-1) var(--r-1) 0;
 	}
 	input:checked + span {
-		border-color: var(--accent);
-		background: var(--accent);
-		color: var(--accent-ink);
-		font-weight: 600;
+		background: var(--surface-3);
+		color: var(--text);
+		box-shadow: inset 0 -2px 0 var(--accent);
 	}
 	input:focus-visible + span {
 		outline: 2px solid var(--accent);
@@ -155,7 +162,10 @@
 	}
 	.kind {
 		color: var(--text-muted);
-		font-size: 0.75rem;
+		font-family: var(--font-mono);
+		font-size: 0.6875rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
 	}
 	.pin {
 		display: grid;

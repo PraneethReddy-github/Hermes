@@ -95,7 +95,6 @@
 	}
 	.pills {
 		display: flex;
-		gap: 8px;
 		margin-top: 12px;
 	}
 	.pills label {
@@ -106,12 +105,20 @@
 		justify-content: center;
 		gap: 4px;
 		min-height: 44px;
-		margin: 0;
-		border: 1px solid var(--border);
-		border-radius: 22px;
+		margin: 0 0 0 -1px;
+		border: 1px solid var(--border-strong);
 		background: var(--surface-2);
-		color: var(--text);
+		color: var(--text-muted);
+		font-weight: 500;
 		cursor: pointer;
+		transition: background-color var(--t-fast) var(--ease);
+	}
+	.pills label:first-child {
+		margin-left: 0;
+		border-radius: var(--r-1) 0 0 var(--r-1);
+	}
+	.pills label:last-child {
+		border-radius: 0 var(--r-1) var(--r-1) 0;
 	}
 	/* The radio stays in the layout (arrow keys, focus) but is covered by its label. */
 	.pills input {
@@ -122,16 +129,16 @@
 		cursor: pointer;
 	}
 	.pills label:has(:checked) {
-		border-color: var(--accent);
-		background: var(--accent);
-		color: var(--accent-ink);
-		font-weight: 600;
+		background: var(--surface-3);
+		color: var(--text);
+		box-shadow: inset 0 -2px 0 var(--accent);
 	}
 	.pills label:has(:focus-visible) {
 		outline: 2px solid var(--accent);
 		outline-offset: 2px;
 	}
 	small {
+		font-family: var(--font-mono);
 		font-size: 0.6875rem;
 		opacity: 0.8;
 	}

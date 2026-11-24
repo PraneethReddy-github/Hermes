@@ -23,7 +23,7 @@
 
 {#if events.length}
 	<section>
-		<h2>Events</h2>
+		<h2 class="caps">Events</h2>
 		{#if allDay.length}
 			<div class="chips">
 				{#each allDay as e (e.eventId + e.originalStart)}
@@ -48,9 +48,6 @@
 <style>
 	h2 {
 		margin: 16px 0 8px;
-		color: var(--text-muted);
-		font-size: 0.875rem;
-		font-weight: 600;
 	}
 	ul {
 		margin: 0;
@@ -69,11 +66,12 @@
 		min-height: 44px;
 		box-sizing: border-box;
 		padding: 0 12px;
-		border-radius: 22px;
-		background: var(--c);
-		color: var(--accent-ink);
+		border-left: 3px solid var(--c);
+		border-radius: var(--r-1);
+		background: var(--surface-2);
+		color: var(--text);
 		font-size: 0.875rem;
-		font-weight: 600;
+		font-weight: 500;
 		text-decoration: none;
 	}
 	li a {
@@ -83,18 +81,24 @@
 		min-height: 44px;
 		box-sizing: border-box;
 		padding: 8px 12px;
-		margin-bottom: 4px;
-		border-left: 4px solid var(--c);
-		border-radius: 6px;
-		background: var(--surface);
+		border-left: 3px solid var(--c);
+		border-bottom: 1px solid var(--border);
+		background: var(--surface-2);
 		color: var(--text);
 		text-decoration: none;
 	}
+	/* Past events step back by colour, not opacity, so the text keeps AA contrast. */
 	li a.past {
-		opacity: 0.5;
+		border-left-color: color-mix(in srgb, var(--c) 45%, transparent);
+	}
+	li a.past .title {
+		color: var(--text-muted);
+		font-weight: 500;
 	}
 	time {
 		color: var(--text-muted);
+		font-family: var(--font-mono);
+		font-size: 0.875rem;
 		font-variant-numeric: tabular-nums;
 	}
 	.title {

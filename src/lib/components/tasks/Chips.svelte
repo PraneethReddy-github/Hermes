@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '../Icon.svelte';
 	let {
 		chips,
 		label = 'Parsed tokens',
@@ -17,7 +18,7 @@
 				<span>{c.text}</span>
 				{#if onremove}
 					<button type="button" class="x" aria-label="Remove {c.text}" onclick={() => onremove(i)}>
-						×
+						<Icon name="close" size={14} />
 					</button>
 				{/if}
 			</li>
@@ -39,10 +40,11 @@
 		align-items: center;
 		min-height: 32px;
 		padding: 0 12px;
-		border: 1px solid var(--border);
-		border-radius: 16px;
+		border: 1px solid var(--border-strong);
+		border-radius: var(--r-1);
 		background: var(--surface-2);
-		font-size: 0.875rem;
+		font-family: var(--font-mono);
+		font-size: 0.8125rem;
 	}
 	li[data-kind='priority'] {
 		border-color: var(--warn);
@@ -58,12 +60,13 @@
 	}
 	/* The visible × is small; the button itself is a 44px target overflowing the chip. */
 	.x {
+		display: grid;
+		place-items: center;
 		min-width: 44px;
 		margin: -6px -12px -6px 0;
 		padding: 0;
 		background: none;
 		border: 0;
 		color: var(--text-muted);
-		font-size: 1.125rem;
 	}
 </style>

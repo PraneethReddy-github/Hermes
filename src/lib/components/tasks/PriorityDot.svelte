@@ -10,9 +10,9 @@
 <style>
 	.dot {
 		flex: none;
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
+		width: 8px;
+		height: 8px;
+		border-radius: var(--r-1);
 		background: var(--text-muted);
 	}
 	.p2 {

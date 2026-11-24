@@ -41,7 +41,7 @@
 	.md :global(pre),
 	.md :global(code) {
 		background: var(--surface-2);
-		border-radius: 6px;
+		border-radius: var(--r-1);
 	}
 	.md :global(code) {
 		padding: 1px 4px;

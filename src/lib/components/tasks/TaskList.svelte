@@ -70,7 +70,7 @@
 
 {#each shown as g, gi (g.title ?? gi)}
 	<section aria-label={g.title}>
-		{#if g.title}<h2>{g.title}</h2>{/if}
+		{#if g.title}<h2 class="caps">{g.title}</h2>{/if}
 		<ul aria-label="Tasks">
 			{#each inOrder(g.tasks) as t (t.id)}
 				<TaskRow
@@ -128,9 +128,6 @@
 	}
 	h2 {
 		margin: 16px 0 4px;
-		color: var(--text-muted);
-		font-size: 0.875rem;
-		font-weight: 600;
 	}
 	ul {
 		margin: 0;

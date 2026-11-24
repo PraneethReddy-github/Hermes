@@ -21,7 +21,8 @@
 	h1 {
 		flex: 1;
 		margin: 0;
-		font-size: 1.25rem;
+		font-size: 1.375rem;
+		letter-spacing: -0.01em;
 	}
 	a {
 		display: grid;

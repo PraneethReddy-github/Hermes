@@ -145,10 +145,6 @@
 		min-height: 44px;
 		color: var(--text);
 	}
-	.pin input {
-		width: 20px;
-		height: 20px;
-	}
 	input,
 	select,
 	textarea {
@@ -164,7 +160,7 @@
 		padding: 8px 12px;
 		margin-bottom: 12px;
 		border: 1px solid var(--border);
-		border-radius: 8px;
+		border-radius: var(--r-1);
 		background: var(--surface);
 	}
 	.actions {
@@ -178,6 +174,6 @@
 	.danger-fill {
 		background: var(--danger);
 		border-color: var(--danger);
-		color: #fff;
+		color: var(--bg);
 	}
 </style>

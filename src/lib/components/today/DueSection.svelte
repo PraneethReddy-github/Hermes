@@ -26,7 +26,7 @@
 
 {#if count}
 	<section>
-		<h2 class:danger>{title} <span>{count}</span></h2>
+		<h2 class="caps" class:danger>{title} <span class="mono">{count}</span></h2>
 		<TaskList groups={[{ tasks }]} {ctx} showProject emptyTitle="" />
 	</section>
 {/if}
@@ -34,14 +34,11 @@
 <style>
 	h2 {
 		margin: 24px 0 4px;
-		color: var(--text-muted);
-		font-size: 0.875rem;
-		font-weight: 600;
 	}
 	h2.danger {
 		color: var(--danger);
 	}
 	h2 span {
-		font-weight: 400;
+		font-weight: 500;
 	}
 </style>

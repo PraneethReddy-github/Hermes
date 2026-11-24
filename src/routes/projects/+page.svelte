@@ -56,7 +56,7 @@
 		{#each active as p (p.id)}
 			<li>
 				<a class="main" href={resolve('/projects/[id]', { id: p.id })}>
-					<span class="dot" style:background={p.color ?? 'var(--border)'}></span>
+					<span class="dot" style:background={p.color ?? 'var(--border-strong)'}></span>
 					<span class="name">{p.name}</span>
 					{#if p.kind === 'checklist'}<span class="kind">Checklist</span>{/if}
 					<span class="count" aria-label="{p.open} open">{p.open}</span>
@@ -70,12 +70,12 @@
 
 	{#if archived.length}
 		<details>
-			<summary>Archived ({archived.length})</summary>
+			<summary>Archived (<span class="mono">{archived.length}</span>)</summary>
 			<ul aria-label="Archived projects">
 				{#each archived as p (p.id)}
 					<li>
 						<a class="main" href={resolve('/projects/[id]', { id: p.id })}>
-							<span class="dot" style:background={p.color ?? 'var(--border)'}></span>
+							<span class="dot" style:background={p.color ?? 'var(--border-strong)'}></span>
 							<span class="name">{p.name}</span>
 							<span class="count" aria-label="{p.open} open">{p.open}</span>
 						</a>
@@ -164,9 +164,9 @@
 	}
 	.dot {
 		flex: none;
-		width: 12px;
-		height: 12px;
-		border-radius: 50%;
+		width: 8px;
+		height: 8px;
+		border-radius: var(--r-1);
 	}
 	.name {
 		flex: 1;
@@ -181,6 +181,8 @@
 		min-width: 24px;
 		color: var(--text-muted);
 		text-align: right;
+		font-family: var(--font-mono);
+		font-size: 0.875rem;
 		font-variant-numeric: tabular-nums;
 	}
 	summary {
@@ -203,6 +205,6 @@
 	.del {
 		background: var(--danger);
 		border-color: var(--danger);
-		color: #fff;
+		color: var(--bg);
 	}
 </style>

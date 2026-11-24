@@ -62,8 +62,10 @@
 		<div class="main">
 			<button class="title" data-focus onclick={() => onopen(task)}>{task.title}</button>
 			<p class="meta">
-				{#if due}<span class:overdue>{due}</span>{/if}
-				{#if subs.length}<span>{subs.filter((s) => s.completedAt).length}/{subs.length}</span>{/if}
+				{#if due}<span class="mono" class:overdue>{due}</span>{/if}
+				{#if subs.length}<span class="mono">
+						{subs.filter((s) => s.completedAt).length}/{subs.length}
+					</span>{/if}
 				{#if meta}<span>{meta}</span>{/if}
 			</p>
 		</div>
@@ -95,7 +97,7 @@
 	}
 	.gold {
 		justify-content: flex-end;
-		background: var(--accent);
+		background: var(--accent-fill);
 	}
 	li[data-swipe='right'] .ok,
 	li[data-swipe='left'] .gold {
@@ -109,7 +111,7 @@
 		min-height: 56px;
 		background: var(--bg);
 		transform: translateX(var(--dx, 0px));
-		transition: transform 150ms ease-out;
+		transition: transform var(--t-fast) var(--ease);
 	}
 	li[data-dragging] .fg {
 		transition: none;

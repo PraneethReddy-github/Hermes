@@ -21,22 +21,29 @@
 	nav {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		padding: 2px;
 		margin-bottom: 12px;
-		background: var(--surface-2);
-		border-radius: 10px;
 	}
 	a {
 		display: grid;
 		place-items: center;
 		min-height: 44px;
-		border-radius: 8px;
+		margin-left: -1px;
+		border: 1px solid var(--border-strong);
+		background: var(--surface-2);
 		color: var(--text-muted);
+		font-weight: 500;
 		text-decoration: none;
 	}
+	a:first-child {
+		margin-left: 0;
+		border-radius: var(--r-1) 0 0 var(--r-1);
+	}
+	a:last-child {
+		border-radius: 0 var(--r-1) var(--r-1) 0;
+	}
 	a[aria-current='page'] {
-		background: var(--surface);
+		background: var(--surface-3);
 		color: var(--text);
-		font-weight: 600;
+		box-shadow: inset 0 -2px 0 var(--accent);
 	}
 </style>

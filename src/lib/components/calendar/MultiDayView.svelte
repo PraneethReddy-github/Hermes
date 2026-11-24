@@ -129,7 +129,7 @@
 		min-height: 0;
 		overflow: auto;
 		border: 1px solid var(--border);
-		border-radius: 12px;
+		border-radius: var(--r-1);
 		background: var(--surface);
 	}
 	.row {
@@ -147,18 +147,23 @@
 		padding: 6px 0;
 		text-align: center;
 		color: var(--text-muted);
-		font-size: 0.875rem;
+		font-family: var(--font-mono);
+		font-size: 0.8125rem;
 	}
 	.head.today {
 		color: var(--accent);
 	}
 	.gutter {
-		padding: 6px 4px;
+		padding: 6px 2px;
 		color: var(--text-muted);
-		font-size: 0.6875rem;
+		font-family: var(--font-mono);
+		font-size: 0.625rem;
+		text-transform: uppercase;
+		white-space: nowrap;
 	}
 	.cell {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		align-content: start;
 		gap: 2px;
 		min-width: 0;
@@ -174,6 +179,7 @@
 		right: 6px;
 		transform: translateY(-50%);
 		color: var(--text-muted);
+		font-family: var(--font-mono);
 		font-size: 0.6875rem;
 	}
 	.hours span:first-child {
@@ -190,7 +196,7 @@
 		);
 	}
 	.col.today {
-		background-color: color-mix(in srgb, var(--accent) 6%, transparent);
+		background-color: color-mix(in srgb, var(--accent-soft) 40%, transparent);
 	}
 	.now {
 		position: absolute;

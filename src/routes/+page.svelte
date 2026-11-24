@@ -84,9 +84,9 @@
 <style>
 	.date {
 		margin: 0 0 8px;
-		font-size: 1.75rem;
-		font-weight: 700;
-		line-height: 1.2;
+		font-family: var(--font-mono);
+		font-size: 0.875rem;
+		color: var(--text-muted);
 	}
 	@media (min-width: 1024px) {
 		main.wide {

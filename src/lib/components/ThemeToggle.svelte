@@ -25,10 +25,24 @@
 <style>
 	.seg {
 		display: flex;
-		gap: 8px;
+	}
+	button {
+		flex: 1;
+		margin-left: -1px;
+		border-radius: 0;
+		color: var(--text-muted);
+		font-weight: 500;
+	}
+	button:first-child {
+		margin-left: 0;
+		border-radius: var(--r-1) 0 0 var(--r-1);
+	}
+	button:last-child {
+		border-radius: 0 var(--r-1) var(--r-1) 0;
 	}
 	button[aria-pressed='true'] {
-		border-color: var(--accent);
-		color: var(--accent);
+		background: var(--surface-3);
+		color: var(--text);
+		box-shadow: inset 0 -2px 0 var(--accent);
 	}
 </style>

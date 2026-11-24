@@ -76,8 +76,8 @@
 		<h2>Backup</h2>
 		{#if data.backup.last}
 			<p>
-				Last backup: <time>{data.backup.last.at}</time><br />
-				<small>{data.backup.last.file} · {data.backup.count} kept</small>
+				Last backup: <time class="mono">{data.backup.last.at}</time><br />
+				<small class="mono">{data.backup.last.file} · {data.backup.count} kept</small>
 			</p>
 		{:else}
 			<p>No backups yet.</p>
@@ -115,7 +115,8 @@
 	.version {
 		margin: 24px 0 0;
 		color: var(--text-muted);
-		font-size: 0.875rem;
+		font-family: var(--font-mono);
+		font-size: 0.8125rem;
 		text-align: center;
 	}
 </style>

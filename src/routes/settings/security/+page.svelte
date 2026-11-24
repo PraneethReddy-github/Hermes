@@ -55,7 +55,7 @@
 		{:else if msg('totp')?.secret}
 			<p>Scan the QR code with your authenticator app, or enter the key by hand.</p>
 			<img src={msg('totp')?.qr} alt="TOTP QR code" width="220" height="220" />
-			<p><code>{msg('totp')?.secret}</code></p>
+			<p><code class="mono">{msg('totp')?.secret}</code></p>
 			<form method="POST" action="?/enableTotp" use:enhance>
 				<input type="hidden" name="secret" value={msg('totp')?.secret} />
 				<input type="hidden" name="qr" value={msg('totp')?.qr} />
@@ -89,7 +89,7 @@
 				<li>
 					<span>{s.userAgent ?? 'Unknown device'}</span>
 					{#if s.current}<strong>This device</strong>{/if}
-					<small>Last seen {fmt(s.lastSeenAt)}</small>
+					<small class="mono">Last seen {fmt(s.lastSeenAt)}</small>
 					<form method="POST" action="?/revoke" use:enhance>
 						<input type="hidden" name="id" value={s.id} />
 						<button class="ghost">{s.current ? 'Sign out this device' : 'Revoke'}</button>
@@ -101,3 +101,35 @@
 
 	<form method="POST" action="/logout"><button class="ghost">Sign out</button></form>
 </main>
+
+<style>
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	li {
+		display: grid;
+		justify-items: start;
+		gap: 4px;
+		padding: 12px 0;
+		border-bottom: 1px solid var(--border);
+	}
+	li:last-child {
+		border-bottom: 0;
+	}
+	li span {
+		overflow-wrap: anywhere;
+	}
+	strong {
+		color: var(--accent);
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		font-weight: 500;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+	li form {
+		margin-top: 4px;
+	}
+</style>

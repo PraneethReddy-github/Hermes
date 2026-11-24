@@ -101,7 +101,6 @@
 	class="ev"
 	class:grid={!!seg}
 	class:dragging={!!drag}
-	class:custom={!!occ.color}
 	data-kind="event"
 	aria-label="{occ.title}, {range}"
 	style:--c={occ.color ?? 'var(--info)'}
@@ -133,22 +132,20 @@
 		min-height: 44px; /* touch target; the hour grid overrides it */
 		padding: 2px 8px;
 		text-align: left;
-		background: var(--c);
-		/* Swatches read on both themes with dark ink; the default blue follows the theme. */
-		color: var(--accent-ink);
+		background: var(--surface-2);
+		color: var(--text);
 		border: 0;
-		border-radius: 6px;
+		border-left: 3px solid var(--c);
+		border-radius: var(--r-1);
 		font-weight: 400;
 		overflow: hidden;
-	}
-	.custom {
-		color: #14161a;
 	}
 	.grid {
 		position: absolute;
 		min-height: 0;
 		padding: 2px 6px;
-		border: 1px solid var(--surface);
+		border: 1px solid var(--border);
+		border-left: 3px solid var(--c);
 		touch-action: pan-y;
 		user-select: none;
 	}
@@ -166,7 +163,9 @@
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
-		font-size: 0.75rem;
+		color: var(--text-muted);
+		font-family: var(--font-mono);
+		font-size: 0.6875rem;
 		line-height: 1.25;
 	}
 	.grid:not(.dragging) {
@@ -175,7 +174,7 @@
 	.dragging {
 		z-index: 3;
 		cursor: grabbing;
-		box-shadow: 0 4px 12px rgb(0 0 0 / 0.35);
+		box-shadow: var(--shadow-float);
 	}
 	.grip {
 		position: absolute;

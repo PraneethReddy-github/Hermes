@@ -72,8 +72,9 @@
 		margin: auto 0 0;
 		width: 100%;
 		max-width: none;
-		border-radius: 12px 12px 0 0;
-		animation: slide 200ms ease-out;
+		border-radius: var(--r-2) var(--r-2) 0 0;
+		box-shadow: var(--shadow-float);
+		animation: slide var(--t-sheet) var(--ease);
 	}
 	.body {
 		padding: 0 16px calc(16px + env(safe-area-inset-bottom));
@@ -89,10 +90,9 @@
 		cursor: grab;
 	}
 	.grab span {
-		width: 36px;
-		height: 4px;
-		border-radius: 2px;
-		background: var(--border);
+		width: 32px;
+		height: 2px;
+		background: var(--border-strong);
 	}
 	h2 {
 		margin: 0 0 12px;
@@ -107,7 +107,7 @@
 		dialog {
 			margin: auto;
 			width: 520px;
-			border-radius: 12px;
+			border-radius: var(--r-2);
 			animation: none;
 		}
 		.body {

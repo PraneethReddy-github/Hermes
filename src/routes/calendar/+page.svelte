@@ -243,8 +243,8 @@
 		align-items: center;
 		gap: 4px;
 		padding: 0 20px 0 12px;
-		border-radius: 24px;
-		box-shadow: 0 4px 12px rgb(0 0 0 / 0.35);
+		border-radius: var(--r-2);
+		box-shadow: var(--shadow-float);
 	}
 	@media (min-width: 1024px) {
 		.stage {

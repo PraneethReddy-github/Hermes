@@ -13,7 +13,7 @@
 	<section>
 		{#if shoppingId && shoppingOpen}
 			<a class="card" href={resolve('/projects/[id]', { id: shoppingId })}>
-				Shopping <b>{shoppingOpen}</b>
+				Shopping <b class="mono">{shoppingOpen}</b>
 			</a>
 		{/if}
 		{#each notes as n (n.id)}
@@ -38,7 +38,7 @@
 		max-width: 100%;
 		padding: 0 16px;
 		border: 1px solid var(--border);
-		border-radius: 12px;
+		border-radius: var(--r-1);
 		background: var(--surface);
 		color: var(--text);
 		text-decoration: none;

@@ -95,7 +95,7 @@
 
 {#if finished.length}
 	<details bind:open={doneOpen}>
-		<summary>Done ({finished.length})</summary>
+		<summary>Done (<span class="mono">{finished.length}</span>)</summary>
 		<form method="POST" action="?/clearDone" use:enhance={clear}>
 			<button class="ghost">Clear done</button>
 		</form>
@@ -148,6 +148,7 @@
 	}
 	.row {
 		display: flex;
+		transition: background-color var(--t-fast) var(--ease);
 		align-items: center;
 		gap: 12px;
 		width: 100%;
@@ -166,6 +167,9 @@
 		min-width: 0;
 		overflow-wrap: anywhere;
 	}
+	.row:hover {
+		background: var(--surface-2);
+	}
 	.row.done {
 		color: var(--text-muted);
 	}
@@ -174,15 +178,26 @@
 	}
 	.circle {
 		flex: none;
-		width: 24px;
-		height: 24px;
+		display: grid;
+		place-content: center;
+		width: 22px;
+		height: 22px;
 		box-sizing: border-box;
-		border: 2px solid var(--text-muted);
-		border-radius: 50%;
+		border: 1.5px solid var(--border-strong);
+		border-radius: var(--r-1);
 	}
 	.circle.done {
-		background: var(--ok);
-		border-color: var(--ok);
+		background: var(--text);
+		border-color: var(--text);
+	}
+	.circle.done::after {
+		content: '';
+		width: 10px;
+		height: 5px;
+		margin-top: -2px;
+		border-left: 2px solid var(--bg);
+		border-bottom: 2px solid var(--bg);
+		transform: rotate(-45deg);
 	}
 	details {
 		margin-top: 16px;

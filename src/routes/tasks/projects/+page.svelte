@@ -22,7 +22,7 @@
 		{/each}
 	</ul>
 	{#if data.labels.length}
-		<h2>Labels</h2>
+		<h2 class="caps">Labels</h2>
 		<ul aria-label="Labels">
 			{#each data.labels as l (l.id)}
 				<li><a href={resolve('/labels/[id]', { id: l.id })}>#{l.name}</a></li>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	// Submit button for a complete/uncomplete form: 24px circle inside a 44px hit target.
+	// Submit button for a complete/uncomplete form: 22px square inside a 44px hit target.
 	let { label, done = false }: { label: string; done?: boolean } = $props();
 </script>
 
@@ -21,17 +21,32 @@
 		border: 0;
 	}
 	.circle {
-		width: 24px;
-		height: 24px;
+		display: grid;
+		place-content: center;
+		width: 22px;
+		height: 22px;
 		box-sizing: border-box;
-		border: 2px solid var(--text-muted);
-		border-radius: 50%;
+		border: 1.5px solid var(--border-strong);
+		border-radius: var(--r-1);
+		transition: background-color var(--t-fast) var(--ease);
+	}
+	.check:hover .circle {
+		border-color: var(--text-muted);
 	}
 	.circle.done {
-		background: var(--ok);
-		border-color: var(--ok);
+		background: var(--text);
+		border-color: var(--text);
+	}
+	.circle.done::after {
+		content: '';
+		width: 10px;
+		height: 5px;
+		margin-top: -2px;
+		border-left: 2px solid var(--bg);
+		border-bottom: 2px solid var(--bg);
+		transform: rotate(-45deg);
 	}
 	.check:active .circle {
-		background: var(--surface-2);
+		background: var(--surface-3);
 	}
 </style>

@@ -37,8 +37,8 @@
 		text-align: left;
 		background: var(--surface);
 		color: var(--text);
-		border: 1.5px solid var(--accent);
-		border-radius: 6px;
+		border: 1px solid var(--border-strong);
+		border-radius: var(--r-1);
 		font-size: 0.875rem;
 		font-weight: 400;
 	}

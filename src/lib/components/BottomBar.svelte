@@ -37,6 +37,7 @@
 		z-index: 10;
 	}
 	a {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -50,13 +51,23 @@
 	a[aria-current='page'] {
 		color: var(--accent);
 	}
+	/* Active nav: a 2px gold line on the bar's top edge. */
+	a[aria-current='page']::before {
+		content: '';
+		position: absolute;
+		top: -1px;
+		left: 20%;
+		right: 20%;
+		height: 2px;
+		background: var(--accent);
+	}
 	.add {
 		justify-self: center;
 		width: 52px;
 		height: 52px;
 		min-height: 0;
 		padding: 0;
-		border-radius: 50%;
+		border-radius: var(--r-2);
 		display: grid;
 		place-items: center;
 	}

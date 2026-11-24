@@ -42,11 +42,11 @@
 		min-height: 48px;
 		padding: 0 4px 0 16px;
 		background: var(--surface-2);
-		border: 1px solid var(--border);
-		border-radius: 12px;
-		box-shadow: 0 4px 16px rgb(0 0 0 / 0.3);
+		border: 1px solid var(--border-strong);
+		border-radius: var(--r-2);
+		box-shadow: var(--shadow-float);
 		pointer-events: auto;
-		animation: rise 150ms ease-out;
+		animation: rise var(--t-sheet) var(--ease);
 	}
 	.toast.error {
 		border-color: var(--danger);

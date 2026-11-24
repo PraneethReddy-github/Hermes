@@ -188,11 +188,6 @@
 		color: var(--text);
 		font-size: 1rem;
 	}
-	.check input {
-		width: 20px;
-		height: 20px;
-		margin: 0;
-	}
 	.pair {
 		display: grid;
 		grid-template-columns: 1fr 1fr;

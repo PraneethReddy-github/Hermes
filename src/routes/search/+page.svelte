@@ -93,7 +93,7 @@
 		{#if !data.q.trim()}
 			{#if recent.length}
 				<section aria-label="Recent searches">
-					<h2>Recent</h2>
+					<h2 class="caps">Recent</h2>
 					<ul>
 						{#each recent as r (r)}
 							<li><button type="button" class="row" onclick={() => pick(r)}>{r}</button></li>
@@ -107,7 +107,7 @@
 			{#each groups as g (g.name)}
 				{#if g.hits.length}
 					<section aria-label={g.name}>
-						<h2>{g.name} ({g.hits.length})</h2>
+						<h2 class="caps">{g.name} (<span class="mono">{g.hits.length}</span>)</h2>
 						<ul>
 							{#each g.hits as h (h.id)}
 								<li>
@@ -172,15 +172,12 @@
 		padding: 0 12px;
 		font: inherit;
 		color: var(--text);
-		background: var(--surface);
-		border: 1px solid var(--border);
-		border-radius: 8px;
+		background: var(--surface-2);
+		border: 1px solid var(--border-strong);
+		border-radius: var(--r-1);
 	}
 	h2 {
 		margin: 16px 0 4px;
-		color: var(--text-muted);
-		font-size: 0.875rem;
-		font-weight: 600;
 	}
 	ul {
 		margin: 0;
@@ -210,11 +207,14 @@
 	.badge {
 		margin-left: 6px;
 		padding: 0 6px;
-		font-size: 0.75rem;
+		font-family: var(--font-mono);
+		font-size: 0.6875rem;
 		font-weight: 500;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
 		color: var(--text-muted);
-		border: 1px solid var(--border);
-		border-radius: 4px;
+		border: 1px solid var(--border-strong);
+		border-radius: var(--r-1);
 	}
 	.extra,
 	.snip {
@@ -223,7 +223,8 @@
 	}
 	mark {
 		color: inherit;
-		background: color-mix(in srgb, var(--accent, gold) 30%, transparent);
-		border-radius: 2px;
+		background: var(--accent-soft);
+		box-shadow: inset 0 -1px 0 var(--accent);
+		border-radius: var(--r-1);
 	}
 </style>

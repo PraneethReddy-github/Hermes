@@ -67,7 +67,7 @@
 
 {#each groups as g (g.day)}
 	<section aria-labelledby="d-{g.day}" data-day={g.day}>
-		<h2 id="d-{g.day}" class:today={g.day === today}>
+		<h2 id="d-{g.day}" class="caps" class:today={g.day === today}>
 			{g.day === today ? 'Today' : formatDay(g.day, today)}
 		</h2>
 		<ul>
@@ -117,9 +117,6 @@
 		margin: 0;
 		padding: 8px 0 4px;
 		background: var(--bg);
-		color: var(--text-muted);
-		font-size: 0.875rem;
-		font-weight: 600;
 	}
 	h2.today {
 		color: var(--accent);
@@ -138,7 +135,8 @@
 	}
 	.at {
 		color: var(--text-muted);
-		font-size: 0.8125rem;
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
 	}
 	.none {
 		display: block;

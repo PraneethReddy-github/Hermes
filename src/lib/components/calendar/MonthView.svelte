@@ -65,14 +65,17 @@
 		gap: 1px;
 		background: var(--border);
 		border: 1px solid var(--border);
-		border-radius: 12px;
+		border-radius: var(--r-1);
 		overflow: hidden;
 	}
 	.wd {
 		padding: 6px 0;
 		background: var(--surface);
 		color: var(--text-muted);
-		font-size: 0.75rem;
+		font-family: var(--font-mono);
+		font-size: 0.6875rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
 		text-align: center;
 	}
 	a {
@@ -81,14 +84,16 @@
 		align-items: center;
 		gap: 4px;
 		min-height: 56px;
+		font-family: var(--font-mono);
+		font-size: 0.875rem;
 		padding: 6px 2px;
 		background: var(--surface);
 		color: var(--text);
 		text-decoration: none;
 	}
 	a.muted {
+		background: var(--bg);
 		color: var(--text-muted);
-		opacity: 0.55;
 	}
 	a.today .n {
 		display: grid;
@@ -96,9 +101,9 @@
 		width: 26px;
 		height: 26px;
 		margin: -3px 0;
-		border-radius: 50%;
-		background: var(--accent);
-		color: var(--accent-ink);
+		border: 1.5px solid var(--accent);
+		border-radius: var(--r-1);
+		color: var(--accent);
 		font-weight: 600;
 	}
 	.dots {
@@ -109,18 +114,19 @@
 	}
 	.dot {
 		box-sizing: border-box;
-		width: 8px;
-		height: 8px;
-		border-radius: 50%;
+		width: 5px;
+		height: 5px;
+		border-radius: var(--r-1);
 	}
 	.event {
 		background: var(--info);
 	}
 	.task {
-		border: 1.5px solid var(--accent);
+		border: 1px solid var(--text-muted);
 	}
 	.more {
 		color: var(--text-muted);
+		font-family: var(--font-mono);
 		font-size: 0.6875rem;
 	}
 </style>

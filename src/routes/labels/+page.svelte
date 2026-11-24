@@ -51,7 +51,7 @@
 					</form>
 				{:else}
 					<a class="main" href={resolve('/labels/[id]', { id: l.id })}>
-						<span class="dot" style:background={l.color ?? 'var(--border)'}></span>
+						<span class="dot" style:background={l.color ?? 'var(--border-strong)'}></span>
 						<span class="name">#{l.name}</span>
 						<span class="count" aria-label="{l.open} open">{l.open}</span>
 					</a>
@@ -117,9 +117,9 @@
 	}
 	.dot {
 		flex: none;
-		width: 12px;
-		height: 12px;
-		border-radius: 50%;
+		width: 8px;
+		height: 8px;
+		border-radius: var(--r-1);
 	}
 	.name {
 		flex: 1;
@@ -130,6 +130,8 @@
 		min-width: 24px;
 		color: var(--text-muted);
 		text-align: right;
+		font-family: var(--font-mono);
+		font-size: 0.875rem;
 		font-variant-numeric: tabular-nums;
 	}
 	.btns {
@@ -142,6 +144,6 @@
 	.del {
 		background: var(--danger);
 		border-color: var(--danger);
-		color: #fff;
+		color: var(--bg);
 	}
 </style>

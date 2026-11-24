@@ -49,6 +49,8 @@
 		padding: 8px 12px 16px;
 		color: var(--accent);
 		font-size: 1.25rem;
+		font-weight: 600;
+		letter-spacing: -0.01em;
 	}
 	.add {
 		justify-content: flex-start;
@@ -61,14 +63,19 @@
 		gap: 12px;
 		min-height: 44px;
 		padding: 0 12px;
-		border-radius: 8px;
+		border-radius: var(--r-1);
 	}
 	a {
 		color: var(--text-muted);
 		text-decoration: none;
+		transition: background-color var(--t-fast) var(--ease);
+	}
+	a:hover {
+		background: var(--surface-3);
 	}
 	a[aria-current='page'] {
 		color: var(--accent);
-		background: var(--surface-2);
+		background: var(--surface-3);
+		box-shadow: inset 2px 0 0 var(--accent);
 	}
 </style>
