@@ -1,17 +1,21 @@
 <script lang="ts">
+	// Straight segments at 45/90 degrees only: no circles, no rounded corners.
 	const PATHS = {
 		today:
-			'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
-		tasks: '<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',
-		calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
-		notes: '<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/>',
-		pin: '<path d="M9 4h6l-1 6 3 3H7l3-3z"/><path d="M12 13v7"/>',
-		check: '<path d="m5 12 5 5 9-10"/>',
-		clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+			'<rect x="8" y="8" width="8" height="8"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>',
+		tasks: '<rect x="3" y="3" width="18" height="18"/><path d="M7 12.5l3.5 3.5L17 9"/>',
+		calendar: '<rect x="3" y="5" width="18" height="16"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+		notes: '<path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4M8 12h8M8 16h8"/>',
+		pin: '<path d="M9 3h6v6l3 3v2H6v-2l3-3z"/><path d="M12 14v7"/>',
+		check: '<path d="M5 12.5l5 5L19 7"/>',
+		clock: '<path d="M8.3 3h7.4L21 8.3v7.4L15.7 21H8.3L3 15.7V8.3z"/><path d="M12 7v5l3 3"/>',
 		plus: '<path d="M12 5v14M5 12h14"/>',
-		search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
+		search: '<path d="M7.6 3.5h5.8l4.1 4.1v5.8l-4.1 4.1H7.6l-4.1-4.1V7.6z"/><path d="M16 16l5 5"/>',
 		settings:
-			'<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>'
+			'<path d="M3 7h11M18 7h3M3 17h3M10 17h11"/><rect x="14" y="5" width="4" height="4"/><rect x="6" y="15" width="4" height="4"/>',
+		'chevron-left': '<path d="M15 5l-7 7 7 7"/>',
+		'chevron-right': '<path d="M9 5l7 7-7 7"/>',
+		close: '<path d="M6 6l12 12M18 6L6 18"/>'
 	};
 	let { name, size = 24 }: { name: keyof typeof PATHS; size?: number } = $props();
 </script>
@@ -23,8 +27,8 @@
 	fill="none"
 	stroke="currentColor"
 	stroke-width="1.75"
-	stroke-linecap="round"
-	stroke-linejoin="round"
+	stroke-linecap="square"
+	stroke-linejoin="miter"
 	aria-hidden="true"
 >
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -- constant strings above -->
