@@ -4,6 +4,7 @@
 	import ColorSwatches from '#lib/components/ColorSwatches.svelte';
 	import Sheet from '#lib/components/Sheet.svelte';
 	import TopBar from '#lib/components/TopBar.svelte';
+	import { SWATCHES } from '../../lib/swatches';
 	import { errorOf } from '../../lib/stores/tasks.svelte';
 	import type { PageProps } from './$types';
 
@@ -40,7 +41,7 @@
 	<form class="card" method="POST" action="?/create" use:enhance={act}>
 		<h2>New project</h2>
 		<label>Name <input name="name" required maxlength="60" autocomplete="off" /></label>
-		<ColorSwatches value="#D4AF37" />
+		<ColorSwatches value={SWATCHES[0].value} />
 		<label>
 			Kind
 			<select name="kind">

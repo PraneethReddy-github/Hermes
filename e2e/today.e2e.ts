@@ -44,7 +44,7 @@ test('Today shows events, overdue first in red, due soon, and Shopping count', a
 	);
 
 	const overdue = page.getByRole('heading', { name: /^Overdue/ });
-	await expect(overdue).toHaveCSS('color', /^rgb\((224, 82, 82|184, 50, 50)\)$/); // --danger, either theme
+	await expect(overdue).toHaveCSS('color', /^rgb\((229, 96, 79|184, 56, 42)\)$/); // --danger, either theme
 	await expect(page.getByRole('listitem').filter({ hasText: late })).toBeVisible();
 	const soonSection = page.locator('section', {
 		has: page.getByRole('heading', { name: /^Due soon/ })
